@@ -9,14 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/charts": "^1.4.2",
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
+    "antd": "^5.7.2",
+    "axios": "^1.4.0",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.11",
+    "mqtt": "^4.3.7",
     "next": "13.4.11",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.1.6"
+    "react-icons": "^4.10.1",
+    "typescript": "5.1.6",
+    "zustand": "^4.3.9"
+  },
+  "devDependencies": {
+    "sass": "^1.64.0"
   }
 }
