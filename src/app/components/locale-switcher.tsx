@@ -1,35 +1,45 @@
 "use client";
 import type { MenuProps } from "antd";
 import { Dropdown } from "antd";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
+import { usePathname, useRouter } from "next-intl/client";
 import React from "react";
 import { TbLanguageKatakana } from "react-icons/tb";
-import { i18n } from "../../../i18n-config";
+import { Locale, i18n } from "../../../i18n-config";
 
 const LocaleSwitcher = () => {
+  const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
-  const redirectPathname = (locale: string) => {
-    if (!pathname) return "/";
-    const segments = pathname.split("/");
-    segments[1] = locale;
-    return segments.join("/");
+
+  // const redirectPathname = (locale: string) => {
+  //   if (!pathname) return "/";
+  //   const segments = pathname.split("/");
+  //   segments[1] = locale;
+  //   return segments.join("/");
+  // };
+
+  // const currentLocale = () => {
+  //   if (!pathname) return "/";
+  //   return pathname.split("/")[1];
+  // };
+
+  const handleClick: MenuProps["onClick"] = async ({ key }) => {
+    await fetch("/api/setCookie", {
+      method: "POST",
+      body: JSON.stringify({
+        key: "locale",
+        value: key,
+      }),
+    });
+
+    router.push(pathname, { locale: key });
   };
 
-  const currentLocale = () => {
-    if (!pathname) return "/";
-    return pathname.split("/")[1];
-  };
-
-  const handleClick: MenuProps["onClick"] = ({ key }) => {
-    router.push(redirectPathname(key));
-  };
-
-  const languages: MenuProps["items"] = i18n.locales.map((locale) => ({
-    label: locale.toUpperCase(),
-    key: locale,
-    disabled: currentLocale() === locale,
+  const languages: MenuProps["items"] = i18n.locales.map((loc) => ({
+    label: loc.toUpperCase(),
+    key: loc,
+    disabled: loc === locale,
   }));
 
   const menuProps = {

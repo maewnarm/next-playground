@@ -1,4 +1,8 @@
 {
+  "main": {
+    "welcome": "Welcome to main page",
+    "greeting": "It's a good to see you at main page !"
+  },
   "homepage": {
     "welcome": "Welcome to Homepage",
     "greeting": "It's a good to see you !"
