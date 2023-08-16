@@ -1,4 +1,4 @@
-import LocaleSwitcher from "@/app/components/locale-switcher";
+import LocaleSwitcher from "@/components/locale-switcher";
 import "@/styles/globals.css";
 import "@/styles/main.scss";
 import { NextIntlClientProvider } from "next-intl";

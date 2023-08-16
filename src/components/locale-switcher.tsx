@@ -5,7 +5,7 @@ import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "next-intl/client";
 import React from "react";
 import { TbLanguageKatakana } from "react-icons/tb";
-import { Locale, i18n } from "../../../i18n-config";
+import { Locale, i18n } from "../../i18n-config";
 
 const LocaleSwitcher = () => {
   const locale = useLocale();
